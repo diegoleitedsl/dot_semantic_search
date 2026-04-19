@@ -1,0 +1,6 @@
+services:
+  semantic:
+    container_name: semantic_search
+    build: .
+    stdin_open: true
+    tty: true
