@@ -18,9 +18,7 @@ Sem frameworks de orquestração — só o necessário.
 
 ## Estrutura
 
-text
-Copiar
-
+```text
 dot_semantic/
 ├── app/
 │ ├── documents.py # corpus de documentos
@@ -28,7 +26,7 @@ dot_semantic/
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
-
+```
 ---
 
 ## Como funciona
