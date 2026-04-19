@@ -1,4 +1,4 @@
-# Questão 3 – Busca Semântica com Embeddings e FAISS
+# Busca Semântica com Embeddings e FAISS
 
 Sistema de busca semântica de documentos usando embeddings e vector store.
 Sem frameworks de orquestração — só o necessário.
@@ -43,8 +43,6 @@ Podem ser artigos, posts, trechos de documentação — qualquer corpus de texto
 O modelo `all-MiniLM-L6-v2` converte cada documento em um vetor de 384 dimensões.
 Documentos semanticamente próximos ficam próximos no espaço vetorial.
 
-python
-Copiar
 
 vectors = model.encode(docs, convert_to_numpy=True)
 
@@ -53,8 +51,6 @@ vectors = model.encode(docs, convert_to_numpy=True)
 Os vetores são adicionados a um índice `IndexFlatL2`.
 Esse índice calcula distância euclidiana (L2) — quanto menor, mais relevante.
 
-python
-Copiar
 
 index = faiss.IndexFlatL2(dim)
 index.add(vectors)
@@ -62,9 +58,6 @@ index.add(vectors)
 ### 4. Busca semântica
 
 A query é convertida no mesmo espaço vetorial e comparada contra o índice:
-
-python
-Copiar
 
 distances, indices = index.search(query_vec, top_k)
 
@@ -74,8 +67,6 @@ O FAISS retorna os `top_k` documentos com menor distância.
 
 ## Execução com Docker
 
-bash
-Copiar
 
 docker compose build --no-cache
 docker compose run --rm semantic
@@ -118,10 +109,3 @@ Digite `sair`, `exit` ou `quit` no prompt `Consulta:`.
 
 ---
 
-## Execução local
-
-bash
-Copiar
-
-pip install -r requirements.txt
-python -u app/semantic_search.py
